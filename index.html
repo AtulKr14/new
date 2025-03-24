@@ -3,47 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style type="text/css">
-        .title{
-            text-align: center;
-            color: red;
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: italic;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: lightcoral;
         }
-
-        #task{
-            color: blue;
-            height: 200px;
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
             text-align: center;
         }
-
-        #button{
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            width: 70%;
+            padding: 5px;
+            border: 1px solid #ae8080;
+            border-radius: 3px;
+        }
+        button {
+            padding: 6px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .add-btn {
+            background: green;
             color: white;
-            background-color: green;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            margin-left: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(203, 180, 180);
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 3px;
         }
     </style>
-
-    <script type="text/javascript">
-      let mesaage=  prompt("Enter the new task");
-      document.getElementById("button").onclick="message";
-    </script>
-
 </head>
 <body>
-    <div class="title">
-        <h1>
-        TASK MANAGER
-    </h1>
-</div>
+    <div class="container">
+        <h2>Task Manager</h2>
+        <input type="text" id="taskInput" placeholder="Enter a task...">
+        <button class="add-btn" onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
 
-
-   <div id="task">
-    <input type="text" placeholder="Enter a task">
-    <span>
-        <button id="button"> ADD TASK</button>
-    </span>
-   </div>
-
-
-   
+    <script>
+        function addTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskValue = taskInput.value.trim();
+            
+            if (taskValue === "") return;
+            
+            let taskList = document.getElementById("taskList");
+            let li = document.createElement("li");
+            let taskText = document.createElement("span");
+            taskText.textContent = taskValue;
+            
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = function() {
+                li.remove();
+            };
+            
+            li.appendChild(taskText);
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+            taskInput.value = "";
+        }
+    </script>
 </body>
 </html>
