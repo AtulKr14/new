@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .title{
+            text-align: center;
+            color: red;
+        }
+
+        #task{
+            color: blue;
+            height: 200px;
+            text-align: center;
+        }
+
+        #button{
+            color: white;
+            background-color: green;
+        }
+    </style>
+
+    <script type="text/javascript">
+      let mesaage=  prompt("Enter the new task");
+      document.getElementById("button").onclick="message";
+    </script>
+
+</head>
+<body>
+    <div class="title">
+        <h1>
+        TASK MANAGER
+    </h1>
+</div>
+
+
+   <div id="task">
+    <input type="text" placeholder="Enter a task">
+    <span>
+        <button id="button"> ADD TASK</button>
+    </span>
+   </div>
+
+
+   
+</body>
+</html>
